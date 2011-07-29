@@ -1,0 +1,40 @@
+[user]
+  name = __USER_NAME__
+  email = __USER_EMAIL__
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = auto
+[github]
+  user = __GITHUB_USER__
+  token = __GITHUB_TOKEN__
+[core]
+  excludesfile = $HOME/.gitexcludes
+  editor = mate -w
+  whitespace=-trailing-space
+  autocrlf = input
+  quotepath = false
+  ignorecase = true
+[alias]
+  st = status
+  di = diff
+  co = checkout
+  ci = commit
+  br = branch
+  sta = stash
+  sub = submodule
+  pre = pull --rebase
+  lg = log --graph --pretty=format:'%Cred%h%Creset %C(cyan)%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+[merge]
+  tool = opendiff
+[http]
+  sslCAInfo = "$HOME/Dropbox/Certs/ca/ca-bundle.pem"
+[diff "localizablestrings"]
+  textconv = "iconv -f utf-16 -t utf-8"
+[difftool "Kaleidoscope"]
+  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+  prompt = false
+[diff]
+  tool = Kaleidoscope
