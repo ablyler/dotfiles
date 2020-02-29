@@ -1,40 +1,47 @@
 [user]
-  name = __USER_NAME__
-  email = __USER_EMAIL__
-[color]
-  diff = auto
-  status = auto
-  branch = auto
-  ui = auto
-[github]
-  user = __GITHUB_USER__
-  token = __GITHUB_TOKEN__
-[core]
-  excludesfile = $HOME/.gitexcludes
-  editor = mate -w
-  whitespace=-trailing-space
-  autocrlf = input
-  quotepath = false
-  ignorecase = true
+	name = AUTHORNAME
+	email = AUTHOREMAIL
+
 [alias]
-  st = status
-  di = diff
-  co = checkout
-  ci = commit
-  br = branch
-  sta = stash
-  sub = submodule
-  pre = pull --rebase
-  lg = log --graph --pretty=format:'%Cred%h%Creset %C(cyan)%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	st = status -sb
+	diffw = diff --word-diff=color
+	diffi = diff --ignore-submodules
+	co = checkout
+	ci = commit
+	br = branch
+	sub = submodule
+	pre = pull --rebase --autostash
+	lg = log --graph --pretty=format:'%Cred%h%Creset %C(cyan)%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	tags = tag -l
+	push = push --recurse-submodules=check
+	branch-s = for-each-ref --sort='-*committerdate' --format="%(refname:short)" refs/heads refs/remotes
+	br-s = "! git branch-s"
+	recent = ! git reflog | grep 'checkout: moving from' | head -n 50 | egrep -oh ' \\S+$' | awk '!x[$0]++'
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = auto
+
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+
+[pager]
+	diff = "less -r"
+
 [merge]
-  tool = opendiff
-[http]
-  sslCAInfo = "$HOME/Dropbox/Certs/ca/ca-bundle.pem"
-[diff "localizablestrings"]
-  textconv = "iconv -f utf-16 -t utf-8"
-[difftool "Kaleidoscope"]
-  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
-[difftool]
-  prompt = false
-[diff]
-  tool = Kaleidoscope
+	tool = opendiff
+
+[credential]
+	helper = osxkeychain
+
+[hub]
+	protocol = https
+
+[help]
+	autocorrect = 1
+
+[push]
+	default = current

@@ -1,0 +1,81 @@
+unbind-key C-b
+set-option -g prefix `
+bind-key ` send-prefix
+bind-key C-b set-option -g prefix C-b
+bind-key C-a set-option -g prefix `
+
+bind | split-window -h
+bind _ split-window -v
+
+bind-key s choose-session
+
+set -g default-command "command -v reattach-to-user-namespace >/dev/null && reattach-to-user-namespace -l zsh || zsh"
+
+# live dangerous, no confirmation on killing windows/panes
+unbind-key &
+bind-key & kill-window
+unbind-key x
+bind-key x kill-pane
+
+set -g pane-border-style bg=black,fg=white
+set -g pane-active-border-style bg=colour232,fg=colour27
+
+# Vim-style pane movement
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# arrow keys for pane movement (until i muscle memory the vim-style)
+# but the default uses `bind -r` which allows multiple presses, which
+# is problematic when going up a pane, and then wanting to arrow-up
+# in command history
+bind Up    select-pane -U
+bind Down  select-pane -D
+bind Left  select-pane -L
+bind Right select-pane -R
+
+# Pane resizing
+bind -r C-h resize-pane -L 5
+bind -r C-j resize-pane -D 5
+bind -r C-k resize-pane -U 5
+bind -r C-l resize-pane -R 5
+
+# reload tmux config
+bind r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
+
+# new status bar settings from @andrewsardone
+set -g status-style fg=white,bg=colour234
+set -g pane-border-style fg=colour245
+set -g pane-active-border-style fg=colour39
+set -g message-style fg=colour16,bg=colour221,bold
+
+set -g status-left '#[fg=colour235,bg=colour252,bold] #S '
+set -g window-status-format '#[fg=white,bg=colour234] #I #W '
+set -g window-status-current-format '#[fg=colour25,bg=colour39,noreverse,bold] #I #W '
+
+set -g status-right-length 0
+set -g status-right ''
+
+# start numbering windows @ 1
+set -g base-index 1
+
+set-option -g status-keys emacs
+set-window-option -g mode-keys vi
+
+set -sg escape-time 0
+
+# keep tmux msgs around longer
+set -g display-time 3000
+
+# scrollback buffer size
+set -g history-limit 15000
+
+# open a man page in new pane or window
+bind m command-prompt -p "man page:" "split-window -v 'exec man %%'"
+bind M command-prompt -p "Man page:" "new-window -n 'man %1' 'exec man %1'"
+
+set -g default-terminal "screen-256color"
+set -g set-titles on
+setw -g automatic-rename on
+
