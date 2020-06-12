@@ -21,7 +21,7 @@
     "Blue Component" : 0.77647058823529413,
     "Green Component" : 0.78431372549019607
   },
-  "Right Option Key Sends" : 2,
+  "Right Option Key Sends" : 0,
   "Character Encoding" : 4,
   "Selection Color" : {
     "Red Component" : 0.2156862745098039,
@@ -245,8 +245,8 @@
       "Action" : 10
     },
     "0xf703-0x280000" : {
-      "Text" : "0x1b 0x1b 0x5b 0x43",
-      "Action" : 11
+      "Action" : 10,
+      "Text" : "f"
     },
     "0xf700-0x240000" : {
       "Text" : "[1;5A",
@@ -277,8 +277,8 @@
       "Action" : 10
     },
     "0xf702-0x280000" : {
-      "Text" : "0x1b 0x1b 0x5b 0x44",
-      "Action" : 11
+      "Action" : 10,
+      "Text" : "b"
     },
     "0xf72b-0x20000" : {
       "Text" : "[1;2F",
@@ -391,8 +391,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : true,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
