@@ -17,6 +17,8 @@
 	branch-s = for-each-ref --sort='-*committerdate' --format="%(refname:short)" refs/heads refs/remotes
 	br-s = "! git branch-s"
 	recent = ! git reflog | grep 'checkout: moving from' | head -n 50 | egrep -oh ' \\S+$' | awk '!x[$0]++'
+	cleanup = !git remote prune origin && git branch --merged | egrep -v '(^\\*|master|develop)' | xargs git branch -d
+	delete-merged-on-origin = !git branch --all --merged remotes/origin/master | grep --invert-match master | grep --invert-match HEAD | grep \"remotes/origin/\" | cut -d \"/\" -f 3- | xargs -n 1 git push --delete origin
 
 [color]
 	diff = auto
