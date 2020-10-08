@@ -4,6 +4,9 @@ then
   export PATH="/usr/local/opt/php56/bin:$PATH"
 fi
 
+# openjdk
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 export GOPATH="$HOME/source"
