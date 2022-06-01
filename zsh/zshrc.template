@@ -39,3 +39,4 @@ done
 
 unset config_files
 
+export HOMEBREW_GITHUB_API_TOKEN=GITHUBHOMEBREWTOKEN

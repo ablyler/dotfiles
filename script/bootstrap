@@ -42,6 +42,20 @@ setup_gitconfig () {
   fi
 }
 
+setup_zshrc() {
+  if ! [ -f zsh/zshrc.symlink ]
+  then
+    info 'setup zshrc'
+
+    user ' - What is your homebrew github token (https://gist.github.com/willgarcia/7347306870779bfa664e)?'
+    read github_homebrew_token
+
+    sed -e "s/GITHUBHOMEBREWTOKEN/$github_homebrew_token/g" $DOTFILES_ROOT/zsh/zshrc.template > $DOTFILES_ROOT/zsh/zshrc.symlink
+
+    success 'zshrc'
+  fi
+}
+
 link_files () {
   ln -s $1 $2
   success "linked $1 to $2"
@@ -114,6 +128,7 @@ install_dotfiles () {
   done
 }
 
+setup_zshrc
 setup_gitconfig
 install_dotfiles
 
