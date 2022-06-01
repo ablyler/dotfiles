@@ -7,6 +7,11 @@ fi
 # openjdk
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
+# pipx
+export PATH="$HOME/.local/bin:$PATH"
+
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
+# go
 export GOPATH="$HOME/source"
+export PATH="$GOPATH/bin:$PATH"
