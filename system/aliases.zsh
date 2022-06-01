@@ -21,3 +21,8 @@ function take() {
 # fix some mac commands that don't work in tmux
 #alias subl='reattach-to-user-namespace subl'
 #alias open='reattach-to-user-namespace open'
+
+function random-string()
+{
+  cat /dev/urandom | env LC_CTYPE=C tr -dc 'A-Z0-9' | fold -w 32 | head -n 1
+}
