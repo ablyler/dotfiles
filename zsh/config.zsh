@@ -1,6 +1,8 @@
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+
 # reenable me when adding zsh functions
 #fpath=($ZSH/zsh/functions $fpath)
 #autoload -U $ZSH/zsh/functions/*(:t)
