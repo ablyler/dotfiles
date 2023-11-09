@@ -7,6 +7,8 @@ fpath+=("$(brew --prefix)/share/zsh/site-functions")
 #fpath=($ZSH/zsh/functions $fpath)
 #autoload -U $ZSH/zsh/functions/*(:t)
 
+plugins=(ssh-agent)
+
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000

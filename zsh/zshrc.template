@@ -5,14 +5,14 @@ export ZSH=$HOME/.dotfiles
 typeset -U config_files
 config_files=($ZSH/*/*.zsh)
 
-# load the path files
-for file in ${(M)config_files:#*/path.zsh}
+# load the homebrew files
+for file in ${(M)config_files:#*/homebrew.zsh}
 do
   source $file
 done
 
 # load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+for file in ${${config_files:#*/homebrew.zsh}:#*/completion.zsh}
 do
   source $file
 done
